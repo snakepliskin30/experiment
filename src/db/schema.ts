@@ -2,7 +2,7 @@ import { pgTable, text, timestamp, varchar, uuid } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 export const tasks = pgTable("tasks", {
-  id: uuid("id").primaryKey(),
+  id: uuid("id").primaryKey().defaultRandom(),
   userId: varchar("user_id", { length: 36 }),
   projectId: uuid("project_id").references(() => projects.id, {
     onDelete: "cascade",
@@ -19,7 +19,7 @@ export const tasks = pgTable("tasks", {
 });
 
 export const projects = pgTable("projects", {
-  id: uuid("id").primaryKey(),
+  id: uuid("id").primaryKey().defaultRandom(),
   userId: varchar("user_id", { length: 36 }),
   name: text("name").notNull(),
   description: text("description"),
