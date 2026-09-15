@@ -1,7 +1,8 @@
+import config from "./config";
 import { createServer } from "./server";
 
 const server = createServer();
 
-server.listen(3000, () => {
+server.listen(config.port, () => {
   console.log(`api running on 3000`);
 });
