@@ -1,13 +1,52 @@
 import { Request, Response } from "express";
+import { db } from "../../../db";
+import { eq } from "drizzle-orm";
+import { projects, tasks } from "../../../db/schema";
+import EntityNotFoundError from "../../../errors/EntityNotFoundError";
 
-export const listProjects = (req: Request, res: Response) => {
-  res.status(200).json([]);
+export const listProjects = async (req: Request, res: Response) => {
+  const allProjects = await db.query.projects.findMany();
+  if (allProjects.length === 0) {
+    throw new EntityNotFoundError({
+      message: "Entity not found",
+      statusCode: 404,
+      code: "ERR_NF",
+    });
+  }
+
+  res.status(200).json(allProjects);
 };
 
-export const getProject = (req: Request, res: Response) => {
-  res.status(200).json({ id: 1, name: "Project 1" });
+export const getProject = async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const project = await db.query.projects.findFirst({
+    where: eq(projects.id, id),
+  });
+
+  if (!project) {
+    throw new EntityNotFoundError({
+      message: "Entity not found",
+      statusCode: 404,
+      code: "ERR_NF",
+    });
+  }
+
+  res.status(200).json(project);
 };
 
-export const listProjectTasks = (req: Request, res: Response) => {
-  res.status(200).json([]);
+export const listProjectTasks = async (req: Request, res: Response) => {
+  const projectId = req.params.id;
+  const projectTasks = await db.query.tasks.findMany({
+    where: eq(tasks.projectId, projectId),
+  });
+
+  if (projectTasks.length === 0) {
+    throw new EntityNotFoundError({
+      message: "Entity not found",
+      statusCode: 404,
+      code: "ERR_NF",
+    });
+  }
+
+  res.status(200).json(projectTasks);
 };
