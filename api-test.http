@@ -4,15 +4,20 @@ GET http://localhost:3000/health HTTP/1.1
 
 ### GET tasks
 GET http://localhost:3000/v1/tasks HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMTZjMTY1My03YjEzLTQ5YmQtOTQ5OS01MzAwN2VhZDAxMjYiLCJpYXQiOjE3ODk1Mjg1MjMsImV4cCI6MTc4OTUzMjEyMywiaXNzIjoiZXhwcmVzcy1tYXN0ZXJ5In0.2ZunP875Tx5WVIYeM_7lLUbhR_cDmw6I8xoI5mt1BXQ
 
 ### GET task by ID
-GET http://localhost:3000/v1/tasks/eaf7fd8b-4aeb-4c7a-8dcb-e059339ae994 HTTP/1.1
+GET http://localhost:3000/v1/tasks/0f41b8c9-c752-4d4a-8a10-80ba92d39f8b HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMTZjMTY1My03YjEzLTQ5YmQtOTQ5OS01MzAwN2VhZDAxMjYiLCJpYXQiOjE3ODk1Mjg1MjMsImV4cCI6MTc4OTUzMjEyMywiaXNzIjoiZXhwcmVzcy1tYXN0ZXJ5In0.2ZunP875Tx5WVIYeM_7lLUbhR_cDmw6I8xoI5mt1BXQ
 
 ### GET projects
 GET http://localhost:3000/v1/projects HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMTZjMTY1My03YjEzLTQ5YmQtOTQ5OS01MzAwN2VhZDAxMjYiLCJpYXQiOjE3ODk1Mjg1MjMsImV4cCI6MTc4OTUzMjEyMywiaXNzIjoiZXhwcmVzcy1tYXN0ZXJ5In0.2ZunP875Tx5WVIYeM_7lLUbhR_cDmw6I8xoI5mt1BXQ
 
 ### GET project by ID
-GET http://localhost:3000/v1/projects/8d3f0018-7274-4a8b-a9f2-1cad26069402 HTTP/1.1
+GET http://localhost:3000/v1/projects/24ceaa5b-0cb0-4b0a-9dd6-19299234ca2c HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMTZjMTY1My03YjEzLTQ5YmQtOTQ5OS01MzAwN2VhZDAxMjYiLCJpYXQiOjE3ODk1Mjg1MjMsImV4cCI6MTc4OTUzMjEyMywiaXNzIjoiZXhwcmVzcy1tYXN0ZXJ5In0.2ZunP875Tx5WVIYeM_7lLUbhR_cDmw6I8xoI5mt1BXQ
 
 ### GET project's tasks
 GET http://localhost:3000/v1/projects/24ceaa5b-0cb0-4b0a-9dd6-19299234ca2c/tasks HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMTZjMTY1My03YjEzLTQ5YmQtOTQ5OS01MzAwN2VhZDAxMjYiLCJpYXQiOjE3ODk1Mjg1MjMsImV4cCI6MTc4OTUzMjEyMywiaXNzIjoiZXhwcmVzcy1tYXN0ZXJ5In0.2ZunP875Tx5WVIYeM_7lLUbhR_cDmw6I8xoI5mt1BXQ

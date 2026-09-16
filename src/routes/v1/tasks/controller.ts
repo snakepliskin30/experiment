@@ -5,7 +5,9 @@ import { tasks } from "../../../db/schema";
 import { eq, and } from "drizzle-orm";
 
 export const listTasks = async (req: Request, res: Response) => {
-  const allTasks = await db.query.tasks.findMany();
+  const allTasks = await db.query.tasks.findMany({
+    where: eq(tasks.userId, req?.auth?.payload?.sub as string),
+  });
 
   if (allTasks.length === 0) {
     throw new EntityNotFoundError({
@@ -25,7 +27,10 @@ export const getTask = async (
 ) => {
   const id = req.params.id;
   const task = await db.query.tasks.findFirst({
-    where: eq(tasks.id, id),
+    where: and(
+      eq(tasks.id, id),
+      eq(tasks.userId, req?.auth?.payload?.sub as string),
+    ),
   });
 
   if (!task) {
