@@ -3,8 +3,16 @@ import EntityNotFoundError from "../../../errors/EntityNotFoundError";
 import { db } from "../../../db";
 import { tasks } from "../../../db/schema";
 import { eq, and } from "drizzle-orm";
+import logger from "../../../logger";
 
 export const listTasks = async (req: Request, res: Response) => {
+  logger.debug("Requesting all tasks");
+  logger
+    .child({
+      logMetadata: `User ${req?.auth?.payload.sub}`,
+    })
+    .debug("is requesting all tasks");
+
   const allTasks = await db.query.tasks.findMany({
     where: eq(tasks.userId, req?.auth?.payload?.sub as string),
   });
@@ -26,6 +34,14 @@ export const getTask = async (
   next: NextFunction,
 ) => {
   const id = req.params.id;
+
+  logger.debug("Requesting a tasks");
+  logger
+    .child({
+      logMetadata: `User ${req?.auth?.payload.sub}`,
+    })
+    .debug("is requesting a tasks");
+
   const task = await db.query.tasks.findFirst({
     where: and(
       eq(tasks.id, id),
