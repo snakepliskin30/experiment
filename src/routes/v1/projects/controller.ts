@@ -82,3 +82,18 @@ export const listProjectTasks = async (req: Request, res: Response) => {
 
   res.status(200).json(projectTasks);
 };
+
+export const createProject = async (req: Request, res: Response) => {
+  logger.debug("creating a project");
+  logger
+    .child({
+      logMetadata: `Create project data ${req.body.toString()}`,
+    })
+    .debug("request body");
+
+  await db
+    .insert(projects)
+    .values({ ...req.body, userId: req?.auth?.payload.sub });
+
+  res.status(200).json({ message: "Task successfuly created." });
+};

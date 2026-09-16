@@ -58,3 +58,18 @@ export const getTask = async (
   }
   res.status(200).json(task);
 };
+
+export const createTask = async (req: Request, res: Response) => {
+  logger.debug("creating a task");
+  logger
+    .child({
+      logMetadata: `Create task data ${req.body.toString()}`,
+    })
+    .debug("request body");
+
+  await db
+    .insert(tasks)
+    .values({ ...req.body, userId: req?.auth?.payload.sub });
+
+  res.status(200).json({ message: "Task successfuly created." });
+};

@@ -10,8 +10,6 @@ export const authenticateUsers = async (
 ) => {
   const authHeader = req.headers.authorization;
 
-  console.log("header", authHeader);
-
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     throw new AuthenticationError({
       message: "Authorization header missing or malformed.",

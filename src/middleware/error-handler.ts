@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import config from "../config";
 import { getErrorMessage } from "../utils";
 import CustomError from "../errors/CustomError";
-import { UnauthorizedError } from "express-oauth2-jwt-bearer"
+import { UnauthorizedError } from "express-oauth2-jwt-bearer";
 
 export default function errorHandler(
   error: unknown,

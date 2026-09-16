@@ -1,5 +1,6 @@
 import { pgTable, text, timestamp, varchar, uuid } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
+import { z } from "zod";
 
 export const tasks = pgTable("tasks", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -45,3 +46,16 @@ export type TaskQuery = typeof tasks.$inferSelect;
 export type TaskInsert = typeof tasks.$inferInsert;
 export type ProjectQuery = typeof projects.$inferSelect;
 export type ProjectInsert = typeof projects.$inferInsert;
+
+// zod schemas
+export const TaskInsertSchema: z.ZodType<TaskInsert> = z.object({
+  name: z.string().min(1),
+  description: z.string(),
+  dueDate: z.coerce.date(),
+  projectId: z.uuid().min(1),
+});
+
+export const ProjectInsertSchema: z.ZodType<ProjectInsert> = z.object({
+  name: z.string().min(1),
+  description: z.string(),
+});
