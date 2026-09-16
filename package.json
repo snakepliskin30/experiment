@@ -68,6 +68,7 @@
     "esbuild@0.28.2": true
   },
   "_moduleAliases": {
-    "@": "./dist"
+    "@": "./dist",
+    "@errors": "./dist/errors"
   }
 }
