@@ -24,7 +24,10 @@ export const authenticateUsers = async (
 
   try {
     const decoded = jwt.verify(token, config.appSecret!);
-    req.auth = { payload: decoded as JwtPayload, token };
+    req.auth = {
+      payload: decoded as JwtPayload,
+      token,
+    };
 
     next();
   } catch (error) {
