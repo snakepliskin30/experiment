@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+// import { faker } from "@faker-js/faker";
 import { db } from "../db";
 import { tasks, projects } from "../db/schema";
 import { sql } from "drizzle-orm";
@@ -15,6 +15,7 @@ const userIds = [
 ];
 
 async function main() {
+  const { faker } = await import("@faker-js/faker");
   await db.execute(
     sql.raw(`TRUNCATE TABLE projects RESTART IDENTITY CASCADE;`),
   );
