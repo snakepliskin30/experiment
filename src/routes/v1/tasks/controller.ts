@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import EntityNotFoundError from "../../../errors/EntityNotFoundError";
-import { db } from "../../../db";
-import { tasks } from "../../../db/schema";
+import EntityNotFoundError from "@/errors/EntityNotFoundError";
+import { db } from "@/db";
+import { tasks } from "@/db/schema";
 import { eq, and } from "drizzle-orm";
-import logger from "../../../logger";
+import logger from "@/logger";
 
 export const listTasks = async (req: Request, res: Response) => {
   logger.debug("Requesting all tasks");

@@ -6,9 +6,9 @@ import {
   createProject,
 } from "./controller";
 // import authenticateUsers from "../../../middleware/authenticate-users";
-import authenticateUser from "../../../middleware/auth-zero-authentication";
-import validateRequestBodySchema from "../../../middleware/validate-schema";
-import { ProjectInsertSchema } from "../../../db/schema";
+import authenticateUser from "@/middleware/auth-zero-authentication";
+import validateRequestBodySchema from "@/middleware/validate-schema";
+import { ProjectInsertSchema } from "@/db/schema";
 
 const projects = express.Router();
 
